@@ -26,8 +26,9 @@ export default function getBlockTags(blockHTML) {
   }
 
   invariant(
-    Object.prototype.hasOwnProperty.call(blockHTML, 'start') && Object.prototype.hasOwnProperty.call(blockHTML, 'end'),
-    'convertToHTML: received block information without either a ReactElement or an object with start/end tags'
+    (Object.prototype.hasOwnProperty.call(blockHTML, 'start') && Object.prototype.hasOwnProperty.call(blockHTML, 'end'))
+     || typeof(blockHTML, 'string'),
+    'convertToHTML: received block information without either a ReactElement or an object with start/end tags or a string'
   );
 
   return blockHTML;
